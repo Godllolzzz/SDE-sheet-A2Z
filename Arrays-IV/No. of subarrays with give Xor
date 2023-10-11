@@ -1,0 +1,13 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A, int B) {
+        int count = 0, curr = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        for(int x: A) {
+            curr ^= x;
+            if(map.containsKey(curr ^ B)) count += map.get(curr ^ B);
+            map.put(curr, map.getOrDefault(curr, 0) + 1);
+        }
+        return count;
+    }
+}
